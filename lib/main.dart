@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
       prevOperator = "";
       prevNumber = 0;
       hasDecimal = false;
-    }else if (buttonText == "+" || buttonText == "-" || buttonText == "x" || buttonText == "/"){
+    }else if (buttonText == "+" || buttonText == "-" || buttonText == "x" || buttonText == "/" || buttonText == "%"){
       prevOperator = buttonText;
       prevNumber = double.parse(outputText);
       outputText = "0";
@@ -53,6 +53,9 @@ class _HomeState extends State<Home> {
           break;
         case "/":
           result = prevNumber / currentNumber;
+          break;
+        case "%":
+          result = prevNumber % currentNumber;
           break;
       }
       outputText = result.toString();
@@ -114,7 +117,7 @@ class _HomeState extends State<Home> {
                     onPressed: (){
                       setState(() {
                         onButtonPressed('C');
-                        DisplayText = outputText;
+                        DisplayText = '0';
                       });
 
                     },
@@ -137,6 +140,7 @@ class _HomeState extends State<Home> {
                   FloatingActionButton(
                     onPressed: (){
                       setState(() {
+                        outputText = DisplayText;
                         onButtonPressed("%");
                         DisplayText = outputText;
                       });
@@ -179,9 +183,13 @@ class _HomeState extends State<Home> {
                   onPressed: (){
 
                     setState((){
+                      if(DisplayText == '0'){
+                        DisplayText = '';
+                      }
 
                       DisplayText += "7";
                       onButtonPressed(DisplayText);
+
 
                     });
                   },
@@ -197,6 +205,9 @@ class _HomeState extends State<Home> {
                   onPressed: (){
 
                     setState(() {
+                      if(DisplayText == '0'){
+                        DisplayText = '';
+                      }
 
                       DisplayText += "8";
                       onButtonPressed(DisplayText);
@@ -213,6 +224,9 @@ class _HomeState extends State<Home> {
                 onPressed: (){
 
                   setState(() {
+                    if(DisplayText == '0'){
+                      DisplayText = '';
+                    }
 
                     DisplayText += "9";
                     onButtonPressed(DisplayText);
@@ -248,6 +262,9 @@ class _HomeState extends State<Home> {
                   onPressed: (){
 
                     setState(() {
+                      if(DisplayText == '0'){
+                        DisplayText = '';
+                      }
 
                       DisplayText += '4';
                       onButtonPressed(DisplayText);
@@ -264,6 +281,9 @@ class _HomeState extends State<Home> {
                   onPressed: (){
 
                     setState(() {
+                      if(DisplayText == '0'){
+                        DisplayText = '';
+                      }
 
                       DisplayText += "5";
                       onButtonPressed(DisplayText);
@@ -281,6 +301,9 @@ class _HomeState extends State<Home> {
                 onPressed: (){
 
                   setState(() {
+                    if(DisplayText == '0'){
+                      DisplayText = '';
+                    }
 
                     DisplayText += "6";
                     onButtonPressed(DisplayText);
@@ -317,9 +340,11 @@ class _HomeState extends State<Home> {
 
                   FloatingActionButton(
                     onPressed: (){
+                      if(DisplayText == '0'){
+                        DisplayText = '';
+                      }
 
                       setState(() {
-                        DisplayText = "1";
                         DisplayText += "1";
                         onButtonPressed(DisplayText);
                       });
@@ -337,6 +362,9 @@ class _HomeState extends State<Home> {
                       onPressed: (){
 
                         setState(() {
+                          if(DisplayText == '0'){
+                            DisplayText = '';
+                          }
 
                           DisplayText += "2";
                           onButtonPressed(DisplayText);
@@ -353,6 +381,10 @@ class _HomeState extends State<Home> {
                     onPressed: (){
 
                       setState(() {
+                        if(DisplayText == '0'){
+                          DisplayText = '';
+                        }
+
                         DisplayText += "3";
                         onButtonPressed(DisplayText);
                       });
@@ -410,9 +442,15 @@ class _HomeState extends State<Home> {
                             FloatingActionButton(
                               onPressed: (){
                                 setState(() {
-                                  onButtonPressed(DisplayText);
+
+                                  if(DisplayText == '0'){
+                                    DisplayText = '';
+                                  }
+                                  outputText = DisplayText;
+
+                                  onButtonPressed(".");
+
                                   DisplayText = outputText;
-                                  onButtonPressed(DisplayText);
                                 });
 
                               },
@@ -426,7 +464,14 @@ class _HomeState extends State<Home> {
                             FloatingActionButton(
                               onPressed: (){
                                 setState(() {
-                                  //numberValue = '0';
+
+                                  DisplayText = DisplayText.substring(0, DisplayText.length - 1);
+
+                                  if(DisplayText == ''){
+                                    DisplayText = '0';
+                                  }
+
+                                  print(DisplayText);
                                 });
                               },
                               child: const Icon(Icons.navigate_before),
