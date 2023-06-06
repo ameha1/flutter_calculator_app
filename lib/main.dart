@@ -84,6 +84,41 @@ class _HomeState extends State<Home> {
   }
 
 
+
+
+  Widget _buildButton(String buttonText) {
+    return SizedBox.fromSize(
+      child:FloatingActionButton(
+        onPressed: (){
+
+          setState((){
+            if(DisplayText == '0'){
+              DisplayText = '';
+            }
+              if(buttonText == '( )'){
+                DisplayText = '';
+              }else{
+
+              DisplayText += buttonText;
+              onButtonPressed(DisplayText);}
+
+          });
+        },
+        backgroundColor: Colors.black12,
+
+        child: Text(buttonText,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25.0,
+          ),
+        ),
+      ),
+    );
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,31 +163,11 @@ class _HomeState extends State<Home> {
                           fontSize: 25.0,
                         )),
                   ),
-                  FloatingActionButton(
-                    onPressed: (){},
-                    backgroundColor: Colors.lightBlueAccent,
-                    child: const Text("( )",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                        )),
-                  ),
-                  FloatingActionButton(
-                    onPressed: (){
-                      setState(() {
-                        outputText = DisplayText;
-                        onButtonPressed("%");
-                        DisplayText = outputText;
-                      });
 
-                    },
-                    backgroundColor: Colors.lightBlueAccent,
-                    child: const Text("%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                        )),
-                  ),
+                  _buildButton('( )'),
+
+                  _buildButton('%'),
+
                   FloatingActionButton(
                     onPressed: (){
                       setState(() {
@@ -179,66 +194,16 @@ class _HomeState extends State<Home> {
             children: <Widget>[
 
 
-              FloatingActionButton(
-                  onPressed: (){
 
-                    setState((){
-                      if(DisplayText == '0'){
-                        DisplayText = '';
-                      }
-
-                      DisplayText += "7";
-                      onButtonPressed(DisplayText);
+              _buildButton('7'),
 
 
-                    });
-                  },
-                backgroundColor: Colors.black12,
-                  child: const Text('7',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0,
-                        ),
-              ),
-              ),
-              FloatingActionButton(
-                  onPressed: (){
+              _buildButton('8'),
 
-                    setState(() {
-                      if(DisplayText == '0'){
-                        DisplayText = '';
-                      }
 
-                      DisplayText += "8";
-                      onButtonPressed(DisplayText);
-                    });
-                  },
-                backgroundColor: Colors.black12,
-                  child: const Text('8',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0,)
-              ),
-              ),
-              FloatingActionButton(
-                onPressed: (){
+              _buildButton('9'),
 
-                  setState(() {
-                    if(DisplayText == '0'){
-                      DisplayText = '';
-                    }
 
-                    DisplayText += "9";
-                    onButtonPressed(DisplayText);
-                  });
-                },
-                backgroundColor: Colors.black12,
-                child: const Text('9',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,),
-              ),
-              ),
               FloatingActionButton(
                 onPressed: (){
                   outputText = DisplayText;
@@ -258,64 +223,12 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
 
-              FloatingActionButton(
-                  onPressed: (){
+              _buildButton('4'),
 
-                    setState(() {
-                      if(DisplayText == '0'){
-                        DisplayText = '';
-                      }
+              _buildButton('5'),
 
-                      DisplayText += '4';
-                      onButtonPressed(DisplayText);
-                    });
-                  },
-                backgroundColor: Colors.black12,
-                  child: const Text("4",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0,)
-              ),
-              ),
-              FloatingActionButton(
-                  onPressed: (){
+              _buildButton('6'),
 
-                    setState(() {
-                      if(DisplayText == '0'){
-                        DisplayText = '';
-                      }
-
-                      DisplayText += "5";
-                      onButtonPressed(DisplayText);
-                    });
-                  },
-                backgroundColor: Colors.black12,
-                  child: const Text("5",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0,
-                  )
-              ),
-              ),
-              FloatingActionButton(
-                onPressed: (){
-
-                  setState(() {
-                    if(DisplayText == '0'){
-                      DisplayText = '';
-                    }
-
-                    DisplayText += "6";
-                    onButtonPressed(DisplayText);
-                  });
-                },
-                backgroundColor: Colors.black12,
-                child: const Text("6",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,),
-              ),
-              ),
               FloatingActionButton(
                 onPressed: (){
                   setState(() {
@@ -338,64 +251,11 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
 
-                  FloatingActionButton(
-                    onPressed: (){
-                      if(DisplayText == '0'){
-                        DisplayText = '';
-                      }
+                 _buildButton('1'),
 
-                      setState(() {
-                        DisplayText += "1";
-                        onButtonPressed(DisplayText);
-                      });
-                    },
-                    backgroundColor: Colors.black12,
-                    child: const Text("1",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0,)
-    ),
-                    ),
+                  _buildButton('2'),
 
-
-                  FloatingActionButton(
-                      onPressed: (){
-
-                        setState(() {
-                          if(DisplayText == '0'){
-                            DisplayText = '';
-                          }
-
-                          DisplayText += "2";
-                          onButtonPressed(DisplayText);
-                        });
-                      },
-                    backgroundColor: Colors.black12,
-                      child: const Text("2",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.0,)
-                  ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: (){
-
-                      setState(() {
-                        if(DisplayText == '0'){
-                          DisplayText = '';
-                        }
-
-                        DisplayText += "3";
-                        onButtonPressed(DisplayText);
-                      });
-                    },
-                    backgroundColor: Colors.black12,
-                    child: const Text("3",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,)
-                    ),
-                  ),
+                  _buildButton('3'),
 
                   FloatingActionButton(
                     onPressed: (){
@@ -423,44 +283,11 @@ class _HomeState extends State<Home> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                           children: <Widget>[
-                            FloatingActionButton(
-                              onPressed: (){
 
-                                setState(() {
+                            _buildButton('0'),
 
-                                  DisplayText += "0";
-                                  onButtonPressed(DisplayText);
-                                });
-                              },
-                              backgroundColor: Colors.black12,
-                              child: const Text("0",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 25.0,)
-                              ),
-                            ),
-                            FloatingActionButton(
-                              onPressed: (){
-                                setState(() {
+                            _buildButton('.'),
 
-                                  if(DisplayText == '0'){
-                                    DisplayText = '';
-                                  }
-                                  outputText = DisplayText;
-
-                                  onButtonPressed(".");
-
-                                  DisplayText = outputText;
-                                });
-
-                              },
-                              backgroundColor: Colors.black12,
-                              child: const Text(".",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 25.0,)
-                              ),
-                            ),
                             FloatingActionButton(
                               onPressed: (){
                                 setState(() {
@@ -471,7 +298,6 @@ class _HomeState extends State<Home> {
                                     DisplayText = '0';
                                   }
 
-                                  print(DisplayText);
                                 });
                               },
                               child: const Icon(Icons.navigate_before),
@@ -487,9 +313,6 @@ class _HomeState extends State<Home> {
                                   onButtonPressed("=");
 
                                   DisplayText = outputText;
-
-                                  
-
                                 });
 
                               },
